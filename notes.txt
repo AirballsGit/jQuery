@@ -1,0 +1,188 @@
+
+
+
+
+
+----------------------------------------------------------------------
+
+Section 4: TEXT, HTML, ATTR, VAL 
+
+Common jquery Methods:
+
+A great way to learn these is to compare them to vanilla JS Methods!
+
+.val()
+https://api.jquery.com/val/
+
+.text()
+https://api.jquery.com/text/
+
+
+.attr()
+https://api.jquery.com/attr/
+
+.html()
+https://api.jquery.com/html/
+
+
+----------------------------------------------------------------------
+
+Section 5: CSS and Classes: 
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+Section 6: Chaining with jQuery 
+
+Almost all jQuery methods return a jQuery object, which allows for method chaining. 
+
+$('a').css('background-color', 'purple').addClass('highlight').text('chaining is fun')
+
+
+example 1: 
+
+instead of: 
+
+let todoContainer = document.querySelector("todo-container");
+todoContainer.style.color = "red";
+todoContainer.innerText = "look at this!";
+todoContainer.addEventListener("click", functiong(evt){
+    console.log("clicked!")
+}); 
+
+we can have: 
+
+$("#todo-container").css("color", "red").text("look at this!").on("click, function(evt){
+    console.log("Clicked!")
+});
+
+
+----------------------------------------------------------------------
+
+Section 7: Traversal 
+
+const $specialLi = $('li').eq(3)
+
+$specialLi.next() ------ shows the next element 
+
+$specialLi.prev() ------ shows the previous element 
+
+
+----------------------------------------------------------------------
+
+Section 8: Creating Appending Removing Elements 
+
+example 1: 
+
+$('ul').append('<li class="highlight"> I AM NEW!! </li>')  // this will create a new li inside the ul as well
+                                                                        as added a class inserted the text "I AM NEW!!"
+
+
+$('<h1>HELLO!</h1>').css('color','orange').appendTo('p')  // this will add a new h1 to every 'p' that says HELLO! in orange
+
+
+$('li').after('<bold>HI</b>')  // >>> creates a <bold>HI</bold> AFTER EACH LI .. <li class="toclevel-1 tocsection-1">…</li> <bold>HI</bold>
+<li> Geology </li>
+HI
+<li> Eruptions </li>
+HI
+<li> Monitoring </li>
+HI
+
+
+
+
+$('img').remove() // removes all imgs 
+
+----------------------------------------------------------------------
+
+
+Section 9: Events and Delegation with jQuery
+
+https://api.jquery.com/category/events/ 
+
+
+$('img').click(function(){  // built in click method: select all images and add a click event to everyone 
+    alert('Hello!')
+})
+
+preferred way over the above example: 
+
+jQuery's on() works similarly to addEventListener. It lets you specify the type of event to listen for. 
+CS says using on() is better due to the flexability it sllows us to leverage event delegation 
+
+
+//prints when item with id "submit" is clicked:
+$("#submit").on("click", function(){
+    console.log("Another Click");
+});
+
+
+----------------------------------------------------------------------
+
+
+Section 10: Event Delegation 
+
+
+EVENT DELEGATION ---- VANILLA JS vs. jQuery 
+
+vanilla: 
+
+//deletes a meme when it is clicked
+//even if it doesnt exsist on page load
+
+document.getElementById("meme-container")
+    .addEventListener("click", function(evt){
+        let target = evt.target;
+    })
+
+// checking for "meme" class on target
+// this logic would need to change a bit 
+// if we were seartching by something
+//else (eg tag name)
+
+    if (target.classList.contains("meme")){
+        deleteMeme(target);
+    });
+
+
+    jQuery: 
+
+// deletes a meme when it is clicked
+//even if it doesnt exist on page load
+
+$("meme-container").on("click", ".meme", function(evt){
+    deleteMeme(evt.targett)
+});
+
+
+
+----------------------------------------------------------------------
+
+
+Section 11: jQuery Animate 
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+Section 12: jQuery Recap: 
+
+Why might you not use jQuery 
+
+- The DOM API is much more standarized 
+- It Doesnt do anything you cant do on your own. Most of the time, it is shorter however 
+- 
